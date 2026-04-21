@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+
+define('MODX_API_MODE', true);
+
+require __DIR__ . '/bootstrap.php';
+$input = new Symfony\Component\Console\Input\ArgvInput;
+if (!defined('IN_INSTALL_MODE')) {
+    if (strpos((string)$input, 'make:update') !== false) {
+        define('IN_INSTALL_MODE', true);
+    } else {
+        define('IN_INSTALL_MODE', false);
+    }
+}
+
+if (!defined('IN_MANAGER_MODE')) {
+    define('IN_MANAGER_MODE', true);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Run The Artisan Application
+|--------------------------------------------------------------------------
+|
+| When we run the console application, the current CLI command will be
+| executed in this console and the response sent back to a terminal
+| or another output device for the developers. Here goes nothing!
+|
+*/
+
+$artisan = new EvolutionCMS\Console(evo(), evo()['events'], evo()->version());
+
+$status = $artisan->run(
+    $input,
+    new Symfony\Component\Console\Output\ConsoleOutput
+);
+
+exit($status);

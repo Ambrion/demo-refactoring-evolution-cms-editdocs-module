@@ -1,0 +1,62 @@
+volumes:
+  mysql-data:
+
+services:
+  nginx:
+    container_name: editdocs_nginx
+    build:
+      context: nginx
+      args:
+        SERVER_NAME: ${SERVER_NAME}
+    restart: no
+    ports:
+      - ${NGINX_HTTP_PORT}:80
+    volumes:
+      - ../:/app:rw
+    depends_on:
+      - php
+  php:
+    container_name: editdocs_php
+    build:
+      context: php
+      args:
+        XDEBUG_CLIENT_HOST: ${PHP_XDEBUG_CLIENT_HOST}
+        XDEBUG_CLIENT_PORT: ${PHP_XDEBUG_CLIENT_PORT}
+        XDEBUG_START_WITH_REQUEST: ${PHP_XDEBUG_START_WITH_REQUEST}
+        XDEBUG_MODE: ${PHP_XDEBUG_MODE}
+        PUID: ${PUID}
+        PGID: ${PGID}
+    restart: no
+    working_dir: /app
+    env_file:
+      - .env
+    environment:
+      PHP_IDE_CONFIG: serverName=${SERVER_NAME}
+    volumes:
+      - ../:/app
+    depends_on:
+      - mysql
+  mysql:
+    container_name: editdocs_mysql
+    image: mysql
+    restart: no
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - ../.docker/mysql-data:/var/lib/mysql:rw
+    user: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  mailer:
+      container_name: editdocs_mailer
+      image: axllent/mailpit
+      restart: no
+      ports:
+          - "1025"
+          - "8025"
+      environment:
+          MP_SMTP_AUTH_ACCEPT_ANY: 1
+          MP_SMTP_AUTH_ALLOW_INSECURE: 1
