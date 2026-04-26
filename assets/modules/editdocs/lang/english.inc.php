@@ -126,5 +126,8 @@ $lang['need_snippet'] = 'Select the desired prepare-snippet';
 $lang['multi_reset'] = 'Erase old data and add current <br>(otherwise just add)';
 $lang['fill_sconf'] = 'fill with the name of the current config';
 $lang['as_is'] = 'leave as is';
-
-?>
+$lang['error_target_not_found'] = 'Target document (ID=[+id+]) does not exist';
+$lang['error_same_parent'] = 'Source and target parent cannot be the same (ID=[+id+])';
+$lang['error_target_is_child'] = 'Target document cannot be a child of the source document (ID=[+target+] inside ID=[+source+])';
+$lang['error_no_children'] = 'Source document has no children to move (ID=[+id+])';
+$lang['error_mass_move'] = 'The error of mass movement of documents';
