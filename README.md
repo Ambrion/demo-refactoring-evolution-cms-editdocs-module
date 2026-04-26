@@ -30,3 +30,4 @@
 ---
 
 Демо рефакторинг легаси кода модуля editDocs для Evolution CMS CE.
+Полное описание можно прочитать на сайте [ambrion.dev](https://ambrion.dev/article/demo-refactoring-evolution-cms-editdocs-module-mass-move-function)
