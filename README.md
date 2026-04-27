@@ -1,10 +1,14 @@
 ### Демо рефакторинг легаси кода модуля editDocs для Evolution CMS CE.
-Базовый разбор можно прочитать на сайте [ambrion.dev](https://ambrion.dev/article/demo-refactoring-evolution-cms-editdocs-module-mass-move-function)
 
-Тут лежит код с докер-контейнером, который можно запустить и разобрать самостоятельно.
+## Рефакторинг функционала massMove():
 
-Для тех кто не знаком с EvolutionCMS CE - код самого модуля лежит внутри системы [тут](https://github.com/Ambrion/demo-refactoring-evolution-cms-editdocs-module/tree/master/assets/modules/editdocs)
+Базовый разбор функционала massMove() можно прочитать на сайте [ambrion.dev](https://ambrion.dev/article/demo-refactoring-evolution-cms-editdocs-module-mass-move-function)
 
+Код на момент написания статьи с докер-контейнером, который можно запустить и разобрать самостоятельно - [смотреть тут](https://github.com/Ambrion/demo-refactoring-evolution-cms-editdocs-module/tree/snapshot-editdocs-massmove-refactor-2026-04-26).
+
+Для тех кто не знаком с EvolutionCMS CE - код самого модуля на момент написания статьи лежит внутри системы [тут](https://github.com/Ambrion/demo-refactoring-evolution-cms-editdocs-module/tree/snapshot-editdocs-massmove-refactor-2026-04-26/assets/modules/editdocs).
+
+Превью статьи:
 # 🎮 Легаси: Босс, которого нельзя победить с первого раза
 
 > *«Легаси, легаси никогда не меняется. Когда-то мой код станет чьим-то легаси, и мне нужно постараться, чтобы следующему разработчику (или мне в будущем) не было мучительно больно его поддерживать.»*
